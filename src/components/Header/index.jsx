@@ -6,7 +6,7 @@ export const Header = () => {
   const isAuth = false;
   return (
     <div className={styles.header}>
-      <Container>
+      <Container maxWidth="lg">
         <div className={styles.wrapper}>
           <a className={styles.logo} href="/">
             <div>Fancy Blog</div>
