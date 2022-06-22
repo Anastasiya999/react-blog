@@ -9,6 +9,7 @@ import CommentIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import React from "react";
 import styles from "./Post.module.scss";
 import { PostSkeleton } from "./PostSkeleton";
+import { UserInfo } from "../UserInfo";
 
 export const Post = ({
   children,
@@ -18,7 +19,7 @@ export const Post = ({
   _id,
   viewsCount,
   commentCount,
-  isLoading = true,
+  isLoading = false,
 }) => {
   if (isLoading) return <PostSkeleton />;
 
@@ -42,7 +43,7 @@ export const Post = ({
         />
       )}
       <div className={styles.wrapper}>
-        <div>user information</div>
+        <UserInfo fullName={"John Newmon"} additionalText="Modern developer" />
         <div className={styles.indention}>
           <h2
             className={clsx(styles.title, { [styles.titleFull]: isFullPost })}
