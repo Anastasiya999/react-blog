@@ -1,6 +1,7 @@
 import { Tabs, Tab, Grid } from "@mui/material";
 
 import React from "react";
+import { CommentsBlock } from "../../components/CommentsBlock";
 import { Post } from "../../components/Post";
 import { TagsBlock } from "../../components/TagsBlock";
 
@@ -36,7 +37,25 @@ export const Home = () => {
             items={["react", "typescript", "mern"]}
             isLoading={false}
           />
-          <div>comments</div>
+          <CommentsBlock
+            items={[
+              {
+                user: {
+                  fullName: "Vasya Pupkin",
+                  avatarUrl: "https://mui.com/static/images/avatar/1.jpg",
+                },
+                text: "This is a test comment",
+              },
+              {
+                user: {
+                  fullName: "Ivan Ivanov",
+                  avatarUrl: "https://mui.com/static/images/avatar/2.jpg",
+                },
+                text: "When displaying three lines or more, the avatar is not aligned at the top. You should set the prop to align the avatar at the top",
+              },
+            ]}
+            isLoading={false}
+          />
         </Grid>
       </Grid>
     </>
