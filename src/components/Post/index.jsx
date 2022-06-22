@@ -8,6 +8,7 @@ import CommentIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 
 import React from "react";
 import styles from "./Post.module.scss";
+import { PostSkeleton } from "./PostSkeleton";
 
 export const Post = ({
   children,
@@ -17,11 +18,14 @@ export const Post = ({
   _id,
   viewsCount,
   commentCount,
+  isLoading = true,
 }) => {
+  if (isLoading) return <PostSkeleton />;
+
   return (
     <div className={clsx(styles.post, { [styles.postFull]: isFullPost })}>
       <div className={styles.editButtons}>
-        <a>
+        <a href={`/posts/${_id}/edit`}>
           <IconButton color="primary">
             <EditIcon />
           </IconButton>

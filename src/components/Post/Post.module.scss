@@ -118,3 +118,34 @@ $blue: #4361ee;
     line-height: 36px;
   }
 }
+
+/*------------------------PostSkeleton-------------------------*/
+
+.skeleton {
+  background-color: #fff;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 15px;
+
+  &Content {
+    padding: 20px;
+  }
+
+  &User {
+    display: flex;
+    &Details {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &Info {
+    padding-left: 50px;
+
+    &Tags {
+      display: flex;
+      gap: 15px;
+    }
+  }
+}
