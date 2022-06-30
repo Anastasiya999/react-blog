@@ -1,0 +1,23 @@
+:root {
+  //color palette
+  --clr-primary: rgba(53, 65, 71, 1);
+  --clr-secondary: rgba(53, 65, 71, 0.23);
+  --clr-light: rgba(255, 255, 255, 1);
+  --clr-dark: rgba(0, 0, 0, 1);
+
+  //typography
+
+  --ff-serif: "Roboto", sans-serif;
+  --ff-cursive: "Caveat Brush", cursive;
+
+  --fs-700: 3rem;
+  --fs-600: 2rem;
+  --fs-500: 1.25rem;
+  --fs-400: 1rem;
+  --fs-300: 0.875rem;
+  --fs-200: 0.75rem;
+
+  --fw-medium: 500;
+  --fw-regular: 400;
+  --fw-light: 300;
+}

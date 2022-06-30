@@ -1,32 +1,57 @@
-import { Button, Container } from "@mui/material";
-import styles from "./Header.module.scss";
 import React from "react";
 
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import { Button, Container } from "@mui/material";
+
+import { logout, selectIsAuth } from "../../redux/slices/auth";
+
+import styles from "./Header.module.scss";
+
 export const Header = () => {
-  const isAuth = false;
+  const isAuth = useSelector(selectIsAuth);
+  const dispatch = useDispatch();
+
+  const handleLogOut = () => {
+    if (window.confirm("Are you sure want to log out?")) {
+      dispatch(logout());
+      window.localStorage.removeItem("token");
+    }
+  };
   return (
     <div className={styles.header}>
       <Container maxWidth="lg">
         <div className={styles.wrapper}>
-          <a className={styles.logo} href="/">
+          <Link className={styles.logo} to="/">
             <div>Fancy Blog</div>
-          </a>
+          </Link>
           <div className={styles.buttons}>
             {isAuth ? (
               <>
-                <a href="/posts/create">
-                  <Button>Write article</Button>
+                <a href="/add-post">
+                  <Button>
+                    Write article <span className={styles.outline} />
+                  </Button>
                 </a>
-                <Button>Log out</Button>
+                <Button onClick={handleLogOut}>
+                  Log out <span className={styles.outline} />
+                </Button>
               </>
             ) : (
               <>
-                <a href="/login">
-                  <Button>Log in</Button>
-                </a>
-                <a href="/register">
-                  <Button>Register</Button>
-                </a>
+                <Link to="/login">
+                  <Button>
+                    Log in
+                    <span className={styles.outline} />
+                  </Button>
+                </Link>
+                <Link to="/register">
+                  <Button>
+                    Register
+                    <span className={styles.outline} />
+                  </Button>
+                </Link>
               </>
             )}
           </div>

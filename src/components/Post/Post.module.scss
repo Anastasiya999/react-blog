@@ -9,7 +9,13 @@ $blue: #4361ee;
   position: relative;
 
   &:hover {
-    box-shadow: 0 0 0 1px $blue;
+    -webkit-box-shadow: 3px 8px 5px -7px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 3px 8px 5px -7px rgba(66, 68, 90, 1);
+    box-shadow: 3px 8px 5px -7px rgba(66, 68, 90, 1);
+
+    .editButtons {
+      opacity: 1;
+    }
   }
 
   &Full {
@@ -24,6 +30,7 @@ $blue: #4361ee;
     list-style: none;
     padding: 0;
     margin: 20px 0 0 0;
+    align-self: flex-end;
 
     li {
       display: inline-flex;
@@ -66,25 +73,28 @@ $blue: #4361ee;
 }
 
 .indention {
-  padding-left: 40px;
+  padding-inline: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
-  font-size: 28px;
+  font-size: var(--fs-600);
+  font-family: var(--ff-cursive);
+  font-weight: normal;
   margin: 0;
 
   a {
     text-decoration: none;
-    color: #000;
+    color: var(--clr-primary);
 
     &:hover {
-      color: $blue;
+      color: rgba(65, 121, 149, 0.99);
     }
   }
 
   &Full {
-    font-size: 42px;
-    font-weight: 900;
+    font-size: var(--fs-700);
   }
 }
 
@@ -92,6 +102,7 @@ $blue: #4361ee;
   list-style: none;
   padding: 0;
   margin: 5px 0 0 0;
+  align-self: flex-end;
 
   li {
     display: inline-block;

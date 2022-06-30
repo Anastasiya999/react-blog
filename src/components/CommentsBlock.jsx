@@ -12,8 +12,13 @@ import React from "react";
 
 export const CommentsBlock = ({ isLoading, items }) => {
   return (
-    <Paper>
-      <List>
+    <Paper sx={{ backgroundColor: (theme) => theme.palette.primary.main }}>
+      <List
+        sx={{
+          pb: "2em",
+          color: (theme) => theme.palette.text.secondary,
+        }}
+      >
         {(isLoading ? [...Array(9)] : items).map((item, index) => {
           return (
             <React.Fragment key={index}>
@@ -40,7 +45,11 @@ export const CommentsBlock = ({ isLoading, items }) => {
                   />
                 )}
               </ListItem>
-              <Divider variant="inset" component="li" />
+              <Divider
+                variant="middle"
+                component="li"
+                sx={{ borderStyle: "dashed" }}
+              />
             </React.Fragment>
           );
         })}

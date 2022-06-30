@@ -1,68 +1,80 @@
-import clsx from "clsx";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Clear";
 import EditIcon from "@mui/icons-material/Edit";
 import EyeIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import CommentIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
-
-import React from "react";
-import styles from "./Post.module.scss";
 import { PostSkeleton } from "./PostSkeleton";
 import { UserInfo } from "../UserInfo";
+
+import { fetchRemovePost } from "../../redux/slices/posts";
+
+import styles from "./Post.module.scss";
+import { Typography } from "@mui/material";
 
 export const Post = ({
   children,
   isFullPost,
   imageUrl,
   title,
-  _id,
+  id,
+  createdAt,
   viewsCount,
   user,
-  commentCount,
-  isLoading = false,
+  tags,
+  commentsCount,
+  isLoading,
+  isEditable,
 }) => {
+  const dispatch = useDispatch();
+
+  const handleRemovePost = () => {
+    dispatch(fetchRemovePost(id));
+  };
+
   if (isLoading) return <PostSkeleton />;
 
   return (
-    <div className={clsx(styles.post, { [styles.postFull]: isFullPost })}>
-      <div className={styles.editButtons}>
-        <a href={`/posts/${_id}/edit`}>
-          <IconButton color="primary">
-            <EditIcon />
+    <div className={[styles.post, isFullPost && styles.postFull].join(" ")}>
+      {isEditable && (
+        <div className={styles.editButtons}>
+          <Link to={`/posts/${id}/edit`}>
+            <IconButton color="primary">
+              <EditIcon />
+            </IconButton>
+          </Link>
+          <IconButton color="secondary" onClick={handleRemovePost}>
+            <DeleteIcon />
           </IconButton>
-        </a>
-        <IconButton color="secondary">
-          <DeleteIcon />
-        </IconButton>
-      </div>
+        </div>
+      )}
+
       {imageUrl && (
         <img
           src={imageUrl}
           alt={title}
-          className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
+          className={[styles.image, isFullPost && styles.imageFull].join(" ")}
         />
       )}
       <div className={styles.wrapper}>
-        <UserInfo {...user} />
+        <UserInfo {...user} additionalText={createdAt} />
         <div className={styles.indention}>
           <h2
-            className={clsx(styles.title, { [styles.titleFull]: isFullPost })}
+            className={[styles.title, isFullPost && styles.titleFull].join(" ")}
           >
-            {isFullPost ? title : <a href={`/posts/${_id}`}>{title}</a>}
+            {isFullPost ? title : <Link to={`/posts/${id}`}>{title}</Link>}
           </h2>
-          <ul className={styles.tags}>
-            <li>
-              <a>#tag</a>
-            </li>
-            <li>
-              <a>#tag2</a>
-            </li>
-            <li>
-              <a>#tag3</a>
-            </li>
-          </ul>
           {children && <div className={styles.content}>{children}</div>}
+          <ul className={styles.tags}>
+            {tags.map((item, index) => (
+              <li key={index}>
+                <a>#{item}</a>
+              </li>
+            ))}
+          </ul>
           <ul className={styles.postDetails}>
             <li>
               <EyeIcon />
@@ -70,7 +82,7 @@ export const Post = ({
             </li>
             <li>
               <CommentIcon />
-              <span>{commentCount}</span>
+              <span>{commentsCount}</span>
             </li>
           </ul>
         </div>
