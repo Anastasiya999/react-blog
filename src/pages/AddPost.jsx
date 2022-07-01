@@ -142,7 +142,7 @@ export const AddPost = () => {
 
           <img
             alt="uploaded"
-            src={`http://localhost:4444${imageUrl}`}
+            src={`${process.env.REACT_APP_API_URL}${imageUrl}`}
             width="100%"
           />
         </>
