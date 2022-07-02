@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       <Header />
-      <Container maxWidth="1000px" sx={{ pb: "1rem" }}>
+      <Container sx={{ pb: "1rem", maxWidth: "1000px" }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/add-post" element={<AddPost />} />
