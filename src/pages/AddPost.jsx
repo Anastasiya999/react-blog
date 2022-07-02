@@ -162,7 +162,7 @@ export const AddPost = () => {
       <TextField
         sx={{ mb: "1rem" }}
         variant="standard"
-        placeholder="Tags"
+        placeholder="tag1, tag2, tag3 ..."
         value={tags}
         onChange={(e) => setTags(e.target.value)}
         fullWidth

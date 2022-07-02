@@ -62,7 +62,7 @@ export const formtheme = createTheme(theme, {
     MuiPaper: {
       styleOverrides: {
         root: {
-          width: "400px",
+          maxWidth: "400px",
           padding: "50px",
           border: "1 px solid #dedede",
           margin: "50px auto",
@@ -88,7 +88,7 @@ export const titleFormTheme = createTheme(theme, {
       styleOverrides: {
         root: {
           input: {
-            fontSize: "3rem",
+            fontSize: "2rem",
             fontWeight: "bold",
           },
           div: {
