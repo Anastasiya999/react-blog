@@ -60,7 +60,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ![fullPost](screenshots/fullPost.png)
 
-## To do(and some bugs)
+### Register
+
+![register](screenshots/register.png)
+
+## To do
 
 Functionalities to be implemented:
 
