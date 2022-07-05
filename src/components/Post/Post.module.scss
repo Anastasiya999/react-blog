@@ -77,7 +77,7 @@ $blue: #4361ee;
   display: flex;
   flex-direction: column;
   @media (max-width: 550px) {
-    padding-inline: 10px;
+    padding-inline: 5px;
   }
 }
 
@@ -132,7 +132,13 @@ $blue: #4361ee;
 }
 
 .content {
-  margin: 30px 0 50px;
+  margin: 1em 0;
+
+  pre {
+    code {
+      overflow-x: auto;
+    }
+  }
 }
 
 /*------------------------PostSkeleton-------------------------*/
